@@ -46,28 +46,28 @@ function deductFromScore(){
 //function to initialize balloon and timer
 function baloonMoveTimer(){
   // first, making ballons move, then start countdown
-  var gameTime = (countDown*100)+delayTimerStart;
+  var gameTime = (countDown*1000)+delayTimerStart;
+  // starting interval
   var gameTimeInterval = setInterval(function(){
-    if (gameTime === 0){
-      
+    console.log('gameTime from ballonMove',gameTime);
+    if (gameTime <= 0){
+      clearInterval(gameTimeInterval);
     }
     // moving ballons
     moveBaloon();
     // seting timer after 1s
     setTimeout(startTimer, delayTimerStart);
-
-
+    gameTime -= 1000;
   }, 1000);
 
+  function moveBaloon(){
 
-}
-
-function moveBaloon(){
-
-}
-function startTimer(){
-  //
-  // var timerInterval = setInterval(
-  //
-  // );
+  }
+  function startTimer(){
+    elTimer.innerText = (gameTime/1000)+1;
+    if (!elTimer.classList.contains('timer-color-slider')){
+      elTimer.classList.toggle('timer-color-slider');
+    }
+    console.log('gameTime is :'+((gameTime/1000)+1));
+  }
 }

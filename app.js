@@ -6,11 +6,13 @@ var elGame = document.getElementById('game'),
 
     gWidth = elGame.innerWidth,
     gHeight = elGame.innerHeight,
+    countDown = 10,
     baloonName,
     baloonNumber,
     totalScore = 0,
     gameLevel = 0,
     delayPlayFirstTime = 2000,
+    delayTimerStart = 1000,
     baloonNumber = 0,
     gameInProgress = false;
 
@@ -35,7 +37,11 @@ function playGame(){
   changeBallonNumber();
   // create and display baloons on screen
   createBallons();
+  // make baloons move and set timer
+  baloonMoveTimer();
+
   // negative points for missing baloon
+  elGame.addEventListener('click',deductFromScore);
 
   gameInProgress = true;
 }
