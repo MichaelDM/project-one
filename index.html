@@ -3,9 +3,46 @@
   <head>
     <meta charset="utf-8">
     <title>Baloon Popping</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Bilbo+Swash+Caps" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="style.css">
   </head>
-  <body>
-
-  <script src="app.js" charset="utf-8"></script>
+  <body><!--
+  --><div id="game">
+      <div id="game-message">
+        <h2>Please press any key to start the game!</h2>
+      </div>
+    </div><!--
+  --><div id="arsenal">
+      <div class="arsenal arsenal-top">
+        <div class="arsenal-top-wrapper">
+          <div class="score">
+            <h1>Total Score<br/>
+            <span id="score">-</span>
+            </h1>
+          </div>
+          <div class="level">
+            <h1>Game Level<br/>
+            <span id="level">-</span>
+            </h1>
+          </div>
+          <div class="timer">
+            <h1>Timer<br/>
+            <span id="timer">
+              10
+            </span>
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div class="arsenal arsenal-bottom">
+        <div class="arsenal-bottom-wrapper">
+          <h1>Instructions</h1>
+          <p>The game objective is to <span>pop all ballons</span> &mdash;by clicking on them&mdash;before time elapses. Each baloon you pop earns you points, but each miss substracts points. Have fun!</p>
+        </div>
+      </div>
+    </div><!--
+  --><script src="app.js" charset="utf-8"></script>
+  <script src="utilityFunctions.js" charset="utf-8"></script>
   </body>
 </html>

@@ -1,1 +1,282 @@
 // out: style.css, compress: true
+
+//CSS RESET
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+// END OF CSS RESET
+
+
+
+//variables & mixins
+@game-width: 75%;
+@arsenal-width: 100%-@game-width;
+@arsenal-top: 50%;
+@arsenal-top-height: 50vh;
+@arsenal-bottom-height: 100vh-@arsenal-top;
+
+@h1: 2rem;
+@h2: 3em;
+@p: 1.3rem;
+
+.cross-browser(@property, @value){
+  -webkit-@{property} : @value;
+  -ms-@{property} : @value;
+  @{property} : @value;
+}
+
+.animation-cross-browser (@value){
+    -webkit-animation: @value;
+    -moz-animation:    @value;
+    -o-animation:      @value;
+    -ms-transition:    @value;
+    animation:         @value;
+}
+
+//General Styles
+body{
+  font-family: helvetica, sans-serif;
+}
+h1{
+  font-size: @h1;
+  padding: 0.5rem;
+  text-align: center;
+}
+h2{
+  font-size: @h2;
+  text-align: center;
+  font-family: 'Bilbo Swash Caps', cursive;
+}
+p{
+  font-size: @p;
+  text-align: center;
+}
+// Game Arsenal General
+#game, #arsenal{
+  display: inline-block;
+  height: 100vh;
+}
+#game{
+  width: @game-width;
+  background-color: lightblue;
+}
+#arsenal{
+  width: @arsenal-width;
+  position: relative;
+}
+.arsenal{
+  width: 100%;
+}
+.arsenal-top{
+  position: absolute;
+  top: 0;
+  height: @arsenal-top-height;
+  background-color: lightgreen;
+}
+.arsenal-bottom{
+  position: absolute;
+  top: @arsenal-top;
+  height: @arsenal-bottom-height;
+  background-color: lightyellow;
+}
+.arsenal-bottom-wrapper,
+.arsenal-top-wrapper{
+  position: relative;
+  top: 50%;
+  .cross-browser(transform, translateY(-50%));
+}
+
+//keyframe to move arsenal into view
+//
+@-webkit-keyframes arsenalMove {
+    0%   {left: -100%;}
+    100% {left: 0;}
+}
+@-moz-keyframes arsenalMove {
+    0%   {left: 100%;}
+    100% {left: 0;}
+}
+@-o-keyframes arsenalMove {
+    0%   {left: 100%;}
+    100% {left: 0;}
+}
+@-ms-keyframes arsenalMove {
+    0%   {left: 100%;}
+    100% {left: 0;}
+}
+@keyframes arsenalMove {
+    0%   {left: 100%;}
+    100% {left: 0;}
+}
+.arsenal-top-wrapper, .arsenal-bottom-wrapper{
+  .animation-cross-browser( arsenalMove 2s);
+}
+
+//Arsenal-Top
+.score, .level{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 15%;
+  h1{
+    display: inline-block;
+    border: 1px solid grey;
+    #score, #level{
+      font-weight: bold;
+      padding-top: 1rem;
+    }
+  }
+}
+#timer {
+    display: inline-block;
+    width: 10vh;
+    height: 10vh;
+    line-height: 10vh;
+    border-radius: 50%;
+    overflow: hidden;
+}
+@-webkit-keyframes timerSlide{
+  from {box-shadow: inset 0 0 0 0 black;}
+  to {box-shadow: inset 0 10vh 0 0 white;}
+}
+@-moz-keyframes timerSlide{
+  from {box-shadow: inset 0 0 0 0 black;}
+  to {box-shadow: inset 0 10vh 0 0 white;}
+}
+@keyframes timerSlide{
+  from {box-shadow: inset 0 0 0 0 black;}
+  to {box-shadow: inset 0 10vh 0 0 white;}
+}
+@keyframes timerSlide{
+  from {box-shadow: inset 0 0 0 0 black;}
+  to {box-shadow: inset 0 10vh 0 0 white;}
+}
+@keyframes timerSlide{
+  from {box-shadow: inset 0 0 0 0 black;}
+  to {box-shadow: inset 0 10vh 0 0 white;}
+}
+.timer-color-slider{
+  .animation-cross-browser(timerSlide 10s linear);
+}
+
+//Arsenal-Bottom
+.arsenal-bottom{
+  margin: auto auto;
+  text-align: center;
+  p,h1{
+    padding-left: 15%;
+    padding-right: 15%;
+    line-height: 1.2em;
+  }
+  h1{
+    margin-bottom: 10%;
+  }
+  span{
+    color: red;
+  }
+}
+
+//Game section
+#game{
+  position: relative;
+  div{
+    position: absolute;
+  }
+  #game-message{
+    color: black;
+    top: 50%;
+    .cross-browser(transform, translateY(-50%));
+    left: 50%;
+    .cross-browser(transform, translateX(-50%));
+    text-align: center;
+  }
+}
+//keyframe for #game-message
+@-webkit-keyframes gameMessageAppear{
+  0% {opacity: 0;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@-moz-keyframes gameMessageAppear{
+  0% {opacity: 0;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@keyframes gameMessageAppear{
+  0% {opacity: 0;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@keyframes gameMessageAppear{
+  0% {opacity: 0;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+@keyframes gameMessageAppear{
+  0% {opacity: 0;}
+  50% {opacity: 0;}
+  100% {opacity: 1;}
+}
+#game-message{
+  .animation-cross-browser(gameMessageAppear 4s ease );
+}
+
+// STYLING ELEMENTS OF THE GAME
+
+.baloon{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  z-index: 2;
+  background-color: pink;
+  border-radius: 50%;
+  overflow: hidden;
+  top: 50%;
+  .cross-browser(transform, translateY(-50%));
+  left: 50%;
+  .cross-browser(transform, translateX(-50%));
+}

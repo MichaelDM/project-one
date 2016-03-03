@@ -1,7 +1,7 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf340
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;\red191\green191\blue191;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww26960\viewh21900\viewkind0
+\paperw11900\paperh16840\margl1440\margr1440\vieww21040\viewh21900\viewkind0
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\b\fs24 \cf0 Title:
@@ -23,34 +23,40 @@
 
 \b Extra: 
 \b0 \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 - multiplayer mode (score of player 1 vs player 2 - will do this if have time)\
+- multiplayer mode (score of player 1 vs player 2 - will do this if have time)\
 - increase baloons pop and missed value with level\
 - change background for each level score display\
 - cool animations (for baloon popping, ui/ux)\
 - change for each level the things to click on, ie: could be a cat which miows when click (could have some that move faster, worth more points)\
+- bonus points for finishing the level sooner\
 
 \b Flow: 
 \b0 \
-\ul Initial setup: \ulnone \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \ulc0 Initial setup: \ulnone \
 - left 90% of screen: background and game will play there\
 - right 10%, from top to bottom: total score display, game level display, instructions (what the game is, how to play, and how the points work)\
 \
 \ul level x before start Game: \
-\ulnone - press key to start game (message inside game to tell user to press a key to start game)\
-\ul level x during Game: \
-\ulnone - instructions to start message dissapear \
-- ballons are created in DOM, pushed in array, and move randomly on screen\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone - press key to start game (message inside game to tell user to press a key to start game)\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \ulc0 level x during Game: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone - instructions to start message dissapear \
+- ballons are created in DOM, pushed in array, and move randomly on screen (startInterval)\
+- add class to timer\
 - when click ballons they are removed from DOM\
 - update score for each click\
-- if baloon array empty before timer --> go to level x End\
-- if time elapsed and array not empty, user looses --> stop game, congrats message --> button to replay\
-\ul level x End: \
-\ulnone - display congratualtions message. \
+- if baloon array empty before timer --> clear Interval, remove class from timer, remove click listener on game section to add negative points --> go to level x End\
+- if time elapsed and array not empty, user looses --> clear interval, remove class from timer, remove click listener on game section to add negative points --> stop game, congrats message --> button to replay\
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ul \ulc0 level x End: \
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+\cf0 \ulnone - display congratualtions message. \
 - change variables for next level: number of baloons, speed of ballons, background level, level difficulty\
 - user press key to move to next level --> got to \ul level x before start game\ulnone  \
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 \
+\
 \
 
 \itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrt\brdrnil \trbrdrl\brdrnil \trbrdrr\brdrnil 
