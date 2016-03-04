@@ -1,6 +1,6 @@
 //function to initialize balloon movement and timer
-function baloonMoveTimer(){
-  // setting opacity before baloons move so that user knows can't pop baloons
+function balloonMoveTimer(){
+  // setting opacity before balloons move so that user knows can't pop balloons
   // var opacityInterval = setInterval(function(){
   //   gameObject.opacitySetting()},10);
 
@@ -9,12 +9,12 @@ function baloonMoveTimer(){
     //remove from DOM?
 
     // iterate for each ballon created
-    for (var i=0; i< elBaloonArray.length; i++){
-      baloonMove(elBaloonArray[i]);
+    for (var i=0; i< elballoonArray.length; i++){
+      balloonMove(elballoonArray[i]);
     }
   }
 
-  // taking out invisibleDiv after delayTimerStart (1s) so that user can start popping baloons
+  // taking out invisibleDiv after delayTimerStart (1s) so that user can start popping balloons
   setTimeout(function(){elInvisible.classList.remove('invisibleOn');},delayTimerStart+500);
 
   // starting interval
@@ -26,11 +26,11 @@ function baloonMoveTimer(){
       gameTime -= 1000;
       gameObject.startTimer();
       // make ballons stop
-      gameObject.clearIntervalOfBaloonArray();
+      gameObject.clearIntervalOfballoonArray();
       // make timer stop
       clearInterval(timerInterval);
       // check if win or loose
-      if (elBaloonArray.length === 0){
+      if (elballoonArray.length === 0){
         //if win
         gameObject.removeElGameEventListener();
         timerActive = false;
@@ -47,8 +47,8 @@ function baloonMoveTimer(){
         //reinitializing game
         gameObject.gameRestart();
       }
-    } else if (elBaloonArray.length === 0){
-      //if all baloons are popped before timer ends
+    } else if (elballoonArray.length === 0){
+      //if all balloons are popped before timer ends
       gameObject.removeElGameEventListener();
       timerActive = false;
       clearInterval(timerInterval);

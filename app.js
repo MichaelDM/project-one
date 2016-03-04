@@ -16,20 +16,20 @@ opacityStatus = false;
 totalScore = 0,
 gameLevel = 0,
 delayPlayFirstTime = 1000,
-baloonNumber = 0,
-elBaloonArray = [],
+balloonNumber = 0,
+elballoonArray = [],
 rotationY = 0,
 rotationX = 0,
 gameInProgress = false,
-intervalBaloonArray = [],
+intervalballoonArray = [],
 firstTime = true,
 //Fixed Parameters and Caching
 gWidth = elGame.offsetWidth,
 gHeight = elGame.offsetHeight,
-baloonNumber,
-///SET BALOON WIDTH AND HEIGHT DYNAMICALLY!!!
-baloonWidth = 100,
-baloonHeight = 100;
+balloonNumber,
+///SET balloon WIDTH AND HEIGHT DYNAMICALLY!!!
+balloonWidth = 100,
+balloonHeight = 100;
 
 // setting objects
 var gameObject = {
@@ -38,9 +38,9 @@ var gameObject = {
     gameLevel +=1;
     elLevel.innerText = gameLevel;
   },
-  //function to change baloon number
+  //function to change balloon number
   changeBallonNumber: function(){
-    baloonNumber = 3*gameLevel;
+    balloonNumber = 3*gameLevel;
   },
   //function to change text in timer and toggle the css
   startTimer : function (){
@@ -83,23 +83,23 @@ var gameObject = {
     totalScore += 3*gameLevel;
     elScore.innerText = totalScore;
   },
-  //function to create baloons and display on screen
+  //function to create balloons and display on screen
   createBallons: function (){
-    // looping over baloon number
-    for (var i = 0 ; i< baloonNumber; i++){
-      // creating unique baloon names
-      var baloonName = 'baloonName'+i;
-      // creating new baloon object based on ballonFactory
-      var baloonName = new BaloonFactory();
-      //adding unique properties to baloons
-      baloonName.name = 'baloon'+i;
-      baloonName.createDiv(i);
-      elBaloonArray.push(baloonName);
+    // looping over balloon number
+    for (var i = 0 ; i< balloonNumber; i++){
+      // creating unique balloon names
+      var balloonName = 'balloonName'+i;
+      // creating new balloon object based on ballonFactory
+      var balloonName = new balloonFactory();
+      //adding unique properties to balloons
+      balloonName.name = 'balloon'+i;
+      balloonName.createDiv(i);
+      elballoonArray.push(balloonName);
     }
   },
-  clearIntervalOfBaloonArray : function(){
-    for (var b = 0; b<intervalBaloonArray.length; b++ ){
-      clearInterval(intervalBaloonArray[b]);
+  clearIntervalOfballoonArray : function(){
+    for (var b = 0; b<intervalballoonArray.length; b++ ){
+      clearInterval(intervalballoonArray[b]);
     }
   },
   removeElGameEventListener : function(){
@@ -113,8 +113,8 @@ var gameObject = {
   },
   reeinitializingGameParam : function(){
     elInvisible.classList.add('invisibleOn');
-    intervalBaloonArray = [];
-    elBaloonArray = [];
+    intervalballoonArray = [];
+    elballoonArray = [];
     gameTime = (countDown*1000)+delayTimerStart,
     firstTime = true;
     gameInProgress = false;
@@ -123,25 +123,25 @@ var gameObject = {
     elInvisible.classList.add('invisibleOn');
     totalScore = 0,
     gameLevel = 0,
-    baloonNumber = 0,
+    balloonNumber = 0,
     gameTime = (countDown*1000)+delayTimerStart;
     gameObject.removeBallons();
     elTimer.classList.toggle('timer-color-slider');
-    intervalBaloonArray = [];
-    elBaloonArray = [];
+    intervalballoonArray = [];
+    elballoonArray = [];
     firstTime = true;
     gameInProgress = false;
   },
   removeBallons: function(){
-    var elBaloonsToRemove = document.querySelectorAll('.baloon');
-    for (var r=0; r<elBaloonsToRemove.length; r++){
-      elBaloonsToRemove[r].remove();
+    var elballoonsToRemove = document.querySelectorAll('.balloon');
+    for (var r=0; r<elballoonsToRemove.length; r++){
+      elballoonsToRemove[r].remove();
     }
   }
 }
 
 // setting factory functions
-function BaloonFactory (){
+function balloonFactory (){
   this.element = "",
   this.dir1 = -1,
   this.dir2 = -1,
@@ -155,7 +155,7 @@ function BaloonFactory (){
   this.startedMoving = false;
 }
 // setting prototypes
-BaloonFactory.prototype = {
+balloonFactory.prototype = {
   randomSelection: function (){
     //generate random number betwee 1 and 4
     var direction = ~~((Math.random()*4)+1);
@@ -174,24 +174,24 @@ BaloonFactory.prototype = {
     this.bottom -= 10;
   },
   createDiv: function(j){
-    var newBaloon = document.createElement('div');
-    newBaloon.classList.add('baloon', 'baloon'+j);
-    elGame.appendChild(newBaloon);
-    // adding event Listener to Baloon
-    newBaloon.addEventListener('click',this.baloonPop);
+    var newballoon = document.createElement('div');
+    newballoon.classList.add('balloon', 'balloon'+j);
+    elGame.appendChild(newballoon);
+    // adding event Listener to balloon
+    newballoon.addEventListener('click',this.balloonPop);
 
-    this.element = newBaloon;
-    // placing baloon in middle at start
+    this.element = newballoon;
+    // placing balloon in middle at start
     this.element.style.left = this.left+'px';
     this.element.style.bottom = this.bottom+'px';
   },
-  //function when baloon is popped
-  baloonPop: function (){
+  //function when balloon is popped
+  balloonPop: function (){
     // disabling click to bubble up to game
-    console.log('baloon is popping');
+    console.log('balloon is popping');
     event.stopPropagation();
     gameObject.addToScore();
-    elBaloonArray.pop();
+    elballoonArray.pop();
     this.remove();
   },
   //generate random number betwee 1 and 4
@@ -218,14 +218,14 @@ function playGame(){
   elGameMessageH2.innerText = "";
   // change game level
   gameObject.changeGameLevel();
-  // change baloon number
+  // change balloon number
   gameObject.changeBallonNumber();
-  // create and display baloons on screen
+  // create and display balloons on screen
   gameObject.createBallons();
-  // make baloons move and set timer
-  baloonMoveTimer();
+  // make balloons move and set timer
+  balloonMoveTimer();
 
-  // negative points for missing baloon
+  // negative points for missing balloon
   setTimeout(function(){elGame.addEventListener('click', gameObject.deductFromScore)}, 1000);
   // making sure can't call game with keydown once the game is playing
   gameInProgress = true;

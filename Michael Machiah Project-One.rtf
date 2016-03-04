@@ -5,28 +5,28 @@
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 
 \f0\b\fs24 \cf0 Title:
-\b0  Baloon popping\
+\b0  balloon popping\
 
 \b Objective:
-\b0  pop all the baloons on the screen before the time elapses\
+\b0  pop all the balloons on the screen before the time elapses\
 
 \b Specifications: 
 \b0 \
-- 2 modes: single player (what level can you reach?) - baloons move randomly on the screen\
+- 2 modes: single player (what level can you reach?) - balloons move randomly on the screen\
 - popping ballons by clicking on them\
-- increased difficulty: number of baloons, speed of balloons\
+- increased difficulty: number of balloons, speed of balloons\
 - final score: number of ballons you poped \
-- decrease score if click doesn't pop a baloon\
+- decrease score if click doesn't pop a balloon\
 - show timer when play game\
-- loose if baloons still remain when timer stops \
+- loose if balloons still remain when timer stops \
 - change background for each game level\
 
 \b Extra: 
 \b0 \
 - multiplayer mode (score of player 1 vs player 2 - will do this if have time)\
-- increase baloons pop and missed value with level\
+- increase balloons pop and missed value with level\
 - change background for each level score display\
-- cool animations (for baloon popping, ui/ux)\
+- cool animations (for balloon popping, ui/ux)\
 - change for each level the things to click on, ie: could be a cat which miows when click (could have some that move faster, worth more points)\
 - bonus points for finishing the level sooner\
 
@@ -48,13 +48,13 @@
 - add class to timer\
 - when click ballons they are removed from DOM\
 - update score for each click\
-- if baloon array empty before timer --> clear Interval, remove class from timer, remove click listener on game section to add negative points --> go to level x End\
+- if balloon array empty before timer --> clear Interval, remove class from timer, remove click listener on game section to add negative points --> go to level x End\
 - if time elapsed and array not empty, user looses --> clear interval, remove class from timer, remove click listener on game section to add negative points --> stop game, congrats message --> button to replay\
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \ul \ulc0 level x End: \
 \pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \ulnone - display congratualtions message. \
-- change variables for next level: number of baloons, speed of ballons, background level, level difficulty\
+- change variables for next level: number of balloons, speed of ballons, background level, level difficulty\
 - user press key to move to next level --> got to \ul level x before start game\ulnone  \
 \
 \
@@ -81,11 +81,11 @@
 \clvertalc \clshdrawnil \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx5760
 \clvertalc \clshdrawnil \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
 \pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 time to pop baloons\cell 
+\cf0 time to pop balloons\cell 
 \pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 level difficulty\cell 
 \pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 each baloon\cell \row
+\cf0 each balloon\cell \row
 
 \itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
 \clvertalc \clshdrawnil \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx2880
@@ -96,7 +96,7 @@
 \pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 number of ballons\cell 
 \pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 click on screen wihtout touching baloon\cell \row
+\cf0 click on screen wihtout touching balloon\cell \row
 
 \itap1\trowd \taflags1 \trgaph108\trleft-108 \trbrdrl\brdrnil \trbrdrr\brdrnil 
 \clvertalc \clshdrawnil \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx2880
@@ -138,7 +138,7 @@
 \clvertalc \clshdrawnil \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx5760
 \clvertalc \clshdrawnil \clbrdrt\brdrs\brdrw20\brdrcf2 \clbrdrl\brdrs\brdrw20\brdrcf2 \clbrdrb\brdrs\brdrw20\brdrcf2 \clbrdrr\brdrs\brdrw20\brdrcf2 \clpadl100 \clpadr100 \gaph\cellx8640
 \pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
-\cf0 baloon creation\cell 
+\cf0 balloon creation\cell 
 \pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
 \cf0 \cell 
 \pard\intbl\itap1\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
