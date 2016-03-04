@@ -19,7 +19,10 @@ function baloonMoveTimer(){
       gameTime -= 1000;
       startTimer();
       // make ballons stop
-      // xxxxxxxx
+      for (var intB = 0; intB <intervalBaloonArray.length; intB ++ ){
+        clearInterval(intervalBaloonArray(intB));
+      }
+      // make timer stop
       clearInterval(timerInterval);
     } else
     // seting timer after 1s

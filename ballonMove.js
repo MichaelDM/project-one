@@ -93,10 +93,11 @@ function baloonMove(thisBaloon){
       }
       firstTime = false;
     }
-    // places baloons at start
+    // places baloons
     thisBaloon.element.style.left = thisBaloon.left+'px';
     thisBaloon.element.style.bottom = thisBaloon.bottom+'px';
     thisBaloon.element.style.transform = 'rotateX('+thisBaloon.rotationX+'deg) rotateY('+thisBaloon.rotationY+'deg)';
   }
   , 300);
+  intervalBaloonArray.push(intervalBaloon);
 }

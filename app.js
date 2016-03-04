@@ -5,7 +5,7 @@ var elGame = document.getElementById('game'),
     elLevel = document.getElementById('level'),
     elTimer = document.getElementById('timer'),
     gWidth = elGame.offsetWidth,
-    gHeight = elGame.offsetWidth,
+    gHeight = elGame.offsetHeight,
     countDown = 10,
     baloonNumber,
     totalScore = 0,
@@ -20,6 +20,7 @@ var elGame = document.getElementById('game'),
     rotationY = 0,
     rotationX = 0,
     gameInProgress = false,
+    intervalBaloonArray = [],
     firstTime = true;
 
 // setting objects
@@ -105,6 +106,9 @@ BaloonFactory.prototype = {
     // adding event Listener to Baloon
     newBaloon.addEventListener('click',this.baloonPop);
     this.element = newBaloon;
+    // placing baloon in middle at start
+    this.element.style.left = this.left+'px';
+    this.element.style.bottom = this.bottom+'px';
   },
   //function when baloon is popped
   baloonPop: function (){
