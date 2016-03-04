@@ -13,10 +13,16 @@ var elGame = document.getElementById('game'),
     delayPlayFirstTime = 2000,
     delayTimerStart = 1000,
     baloonNumber = 0,
-    elBaloonArray = [];
-    gameInProgress = false;
-
-    var testArray = [];
+    elBaloonArray = [],
+    ///SET BALOON WIDTH AND HEIGHT DYNAMICALLY!!!
+    baloonWidth =100,
+    baloonHeight = 100,
+    left = gWidth/2,
+    bottom = gHeight/2,
+    rotationY = 0,
+    rotationX = 0,
+    gameInProgress = false,
+    firstTime = true;
 
 // setting objects
 var gameObject = {
@@ -51,10 +57,7 @@ var gameObject = {
     for (var i = 0 ; i< baloonNumber; i++){
       // creating unique baloon names
       var baloonName = 'baloonName'+i;
-      console.log(baloonName);
       // creating new baloon object based on ballonFactory
-      var test = new BaloonFactory;
-      testArray.push(test);
       var baloonName = new BaloonFactory();
       //adding unique properties to baloons
       baloonName.name = 'baloon'+i;
@@ -66,8 +69,6 @@ var gameObject = {
 
 // setting factory functions
 function BaloonFactory (){
-
-  // var balloon = {}
   this.element = "",
   this.dir1 = -1,
   this.dir2 = -1,
@@ -77,7 +78,6 @@ function BaloonFactory (){
   this.rotationX = 0,
   this.firstTime = true,
   this.startedMoving = false;
-  // return balloon;
 }
 // setting prototypes
 BaloonFactory.prototype = {
@@ -104,6 +104,7 @@ BaloonFactory.prototype = {
     elGame.appendChild(newBaloon);
     // adding event Listener to Baloon
     newBaloon.addEventListener('click',this.baloonPop);
+    this.element = newBaloon;
   },
   //function when baloon is popped
   baloonPop: function (){
@@ -112,13 +113,18 @@ BaloonFactory.prototype = {
     event.stopPropagation();
     gameObject.addToScore();
     this.remove();
+  },
+  //generate random number betwee 1 and 4
+  randomSelection : function(){
+    var direction = ~~((Math.random()*4)+1);
+    return direction;
   }
 }
 
 // Playing Game
 setTimeout(function(){document.addEventListener('keyup', playGame)}, delayPlayFirstTime);
-
 function playGame(){
+  console.log('game is starting');
   //disable keydown event if game is in progress
   if (gameInProgress){
     return;
