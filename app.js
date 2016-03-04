@@ -1,30 +1,34 @@
 // setting variables
+//DOM variables
 var elGame = document.getElementById('game'),
-    elGameMessage = document.getElementById('game-message'),
-    elGameMessageH2 = document.querySelector('#game-message h2'),
-    elScore = document.getElementById('score'),
-    elLevel = document.getElementById('level'),
-    elTimer = document.getElementById('timer'),
-    gWidth = elGame.offsetWidth,
-    gHeight = elGame.offsetHeight,
-    countDown = 10,
-    delayTimerStart = 1000,
-    gameTime = (countDown*1000)+delayTimerStart,
-    baloonNumber,
-    timerActive = false,
-    totalScore = 0,
-    gameLevel = 0,
-    delayPlayFirstTime = 2000,
-    baloonNumber = 0,
-    elBaloonArray = [],
-    ///SET BALOON WIDTH AND HEIGHT DYNAMICALLY!!!
-    baloonWidth =100,
-    baloonHeight = 100,
-    rotationY = 0,
-    rotationX = 0,
-    gameInProgress = false,
-    intervalBaloonArray = [],
-    firstTime = true;
+elGameMessage = document.getElementById('game-message'),
+elGameMessageH2 = document.querySelector('#game-message h2'),
+elScore = document.getElementById('score'),
+elLevel = document.getElementById('level'),
+elTimer = document.getElementById('timer'),
+elInvisible = document.getElementById('invisibleDiv'),
+//Initial Parameters Settings
+countDown = 10,
+delayTimerStart = 2000,
+gameTime = (countDown*1000)+delayTimerStart,
+timerActive = false,
+totalScore = 0,
+gameLevel = 0,
+delayPlayFirstTime = 1000,
+baloonNumber = 0,
+elBaloonArray = [],
+rotationY = 0,
+rotationX = 0,
+gameInProgress = false,
+intervalBaloonArray = [],
+firstTime = true,
+//Fixed Parameters and Caching
+gWidth = elGame.offsetWidth,
+gHeight = elGame.offsetHeight,
+baloonNumber,
+///SET BALOON WIDTH AND HEIGHT DYNAMICALLY!!!
+baloonWidth = 100,
+baloonHeight = 100;
 
 // setting objects
 var gameObject = {
@@ -91,7 +95,7 @@ var gameObject = {
     elGameMessageH2.innerText = 'CONGRATULATIONS, you finished Level '+gameLevel+'! \nPress any key to continue to next level'
   },
   endGameMessage : function(){
-    elGameMessageH2.innerHTML = 'Sorry, time\'s up! You finished the game accumulating '+totalScore+' points! :)'
+    elGameMessageH2.innerHTML = 'Sorry, time\'s up! You finished the game accumulating '+totalScore+' points! :) \n Press any key to restart game.'
   },
   reeinitializingGameParam : function(){
     intervalBaloonArray = [];
@@ -99,6 +103,24 @@ var gameObject = {
     gameTime = (countDown*1000)+delayTimerStart,
     firstTime = true;
     gameInProgress = false;
+  },
+  gameRestart : function(){
+    totalScore = 0,
+    gameLevel = 0,
+    baloonNumber = 0,
+    gameTime = (countDown*1000)+delayTimerStart;
+    gameObject.removeBallons();
+    elTimer.classList.toggle('timer-color-slider');
+    intervalBaloonArray = [];
+    elBaloonArray = [];
+    firstTime = true;
+    gameInProgress = false;
+  },
+  removeBallons: function(){
+    var elBaloonsToRemove = document.querySelectorAll('.baloon');
+    for (var r=0; r<elBaloonsToRemove.length; r++){
+      elBaloonsToRemove[r].remove();
+    }
   }
 }
 
@@ -141,6 +163,7 @@ BaloonFactory.prototype = {
     elGame.appendChild(newBaloon);
     // adding event Listener to Baloon
     newBaloon.addEventListener('click',this.baloonPop);
+
     this.element = newBaloon;
     // placing baloon in middle at start
     this.element.style.left = this.left+'px';
@@ -187,7 +210,7 @@ function playGame(){
   baloonMoveTimer();
 
   // negative points for missing baloon
- setTimeout(function(){elGame.addEventListener('click', gameObject.deductFromScore)}, 1000);
-
- gameInProgress = true;
+  setTimeout(function(){elGame.addEventListener('click', gameObject.deductFromScore)}, 1000);
+  // making sure can't call game with keydown once the game is playing
+  gameInProgress = true;
 }

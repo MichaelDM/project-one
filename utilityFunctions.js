@@ -12,11 +12,13 @@ function baloonMoveTimer(){
     }
   }
 
+  // taking out invisibleDiv after delayTimerStart (1s) so that user can start popping baloons
+  setTimeout(function(){elInvisible.classList.remove('invisibleOn');},delayTimerStart+500);
+
   // starting interval
   var timerInterval = setInterval(function(){
     // setting timer to active
     timerActive = true;
-
     // if game time finishes
     if (gameTime <= 0){
       gameTime -= 1000;
@@ -29,17 +31,19 @@ function baloonMoveTimer(){
       if (elBaloonArray.length === 0){
         //if win
         gameObject.removeElGameEventListener();
+        timerActive = false;
         clearInterval(timerInterval);
         gameObject.congratsMessage();
         //reinitializing game
         gameObject.reeinitializingGameParam();
       } else{
         //if loose
+        timerActive = false;
         gameObject.removeElGameEventListener();
         clearInterval(timerInterval);
         gameObject.endGameMessage();
         //reinitializing game
-        gameObject.reeinitializingGameParam();
+        gameObject.gameRestart();
       }
     } else if (elBaloonArray.length === 0){
       //if all baloons are popped before timer ends
