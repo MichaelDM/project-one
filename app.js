@@ -8,11 +8,12 @@ var elGame = document.getElementById('game'),
     gWidth = elGame.offsetWidth,
     gHeight = elGame.offsetHeight,
     countDown = 10,
+    delayTimerStart = 1000,
+    gameTime = (countDown*1000)+delayTimerStart,
     baloonNumber,
     totalScore = 0,
     gameLevel = 0,
     delayPlayFirstTime = 2000,
-    delayTimerStart = 1000,
     baloonNumber = 0,
     elBaloonArray = [],
     ///SET BALOON WIDTH AND HEIGHT DYNAMICALLY!!!
@@ -34,6 +35,14 @@ var gameObject = {
   //function to change baloon number
   changeBallonNumber: function(){
     baloonNumber = 3*gameLevel;
+  },
+  //function to change text in timer and toggle the css
+  startTimer : function (){
+    elTimer.innerText = (gameTime/1000)+1;
+    if (!elTimer.classList.contains('timer-color-slider')){
+      elTimer.classList.toggle('timer-color-slider');
+    }
+    console.log('gameTime is :'+((gameTime/1000)+1));
   },
   //function to deduct points
   deductFromScore: function (){
@@ -82,6 +91,7 @@ var gameObject = {
   reeinitializingGameParam : function(){
     intervalBaloonArray = [];
     elBaloonArray = [];
+    gameTime = (countDown*1000)+delayTimerStart,
     firstTime = true;
     gameInProgress = false;
   }
