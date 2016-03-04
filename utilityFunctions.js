@@ -1,6 +1,8 @@
 //function to initialize balloon movement and timer
 function baloonMoveTimer(){
-  // time upon which both ballons and timer will depend
+  // setting opacity before baloons move so that user knows can't pop baloons
+  // var opacityInterval = setInterval(function(){
+  //   gameObject.opacitySetting()},10);
 
   // start moving balloons when start of game Time starts
   if (gameTime === (countDown*1000)+delayTimerStart){

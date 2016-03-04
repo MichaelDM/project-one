@@ -235,6 +235,8 @@ p{
     text-align: center;
     h2{
       z-index: 100;
+      top: 50%;
+      .cross-browser(transform, translateY(-50%));
     }
   }
   #invisibleDiv{
@@ -243,9 +245,12 @@ p{
     right: 0;
     bottom: 0;
   }
-  .invisibleOn{
-    z-index: 10;
-  }
+}
+.invisibleOn{
+  z-index: 10;
+}
+.opacityOn{
+  background-color: rgba(0.3, 0.3, 0.3, 0.3);
 }
 //keyframe for #game-message
 @-webkit-keyframes gameMessageAppear{

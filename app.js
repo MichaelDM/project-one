@@ -12,6 +12,7 @@ countDown = 10,
 delayTimerStart = 2000,
 gameTime = (countDown*1000)+delayTimerStart,
 timerActive = false,
+opacityStatus = false;
 totalScore = 0,
 gameLevel = 0,
 delayPlayFirstTime = 1000,
@@ -53,6 +54,19 @@ var gameObject = {
     }
     console.log('gameTime is :'+((gameTime/1000)+1));
   },
+  // opacitySetting : function(){
+  //   setTimeout(function () {
+  //     opacityStatus = true;
+  //   }, delayTimerStart+500);
+  //
+  //   if (opacityStatus == false && !elInvisible.classList.contains('opacityOn')){
+  //   elInvisible.classList.add('opacityOn');
+  //   } else if (opacityStatus = true){
+  //     elInvisible.classList.remove('opacityOn');
+  //     opacityStatus = false;
+  //     // return clearInterval(opacityInterval);
+  //   }
+  // },
   //function to deduct points
   deductFromScore: function (){
     console.log('deductFromScore is happening');
@@ -98,6 +112,7 @@ var gameObject = {
     elGameMessageH2.innerHTML = 'Sorry, time\'s up! You finished the game accumulating '+totalScore+' points! :) \n Press any key to restart game.'
   },
   reeinitializingGameParam : function(){
+    elInvisible.classList.add('invisibleOn');
     intervalBaloonArray = [];
     elBaloonArray = [];
     gameTime = (countDown*1000)+delayTimerStart,
@@ -105,6 +120,7 @@ var gameObject = {
     gameInProgress = false;
   },
   gameRestart : function(){
+    elInvisible.classList.add('invisibleOn');
     totalScore = 0,
     gameLevel = 0,
     baloonNumber = 0,
