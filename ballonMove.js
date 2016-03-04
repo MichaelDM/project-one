@@ -98,6 +98,6 @@ function balloonMove(thisballoon){
     thisballoon.element.style.bottom = thisballoon.bottom+'px';
     thisballoon.element.style.transform = 'rotateX('+thisballoon.rotationX+'deg) rotateY('+thisballoon.rotationY+'deg)';
   }
-  , 300);
+  , speed);
   intervalballoonArray.push(intervalballoon);
 }

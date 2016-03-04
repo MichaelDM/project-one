@@ -12,7 +12,7 @@ countDown = 10,
 delayTimerStart = 2000,
 gameTime = (countDown*1000)+delayTimerStart,
 timerActive = false,
-opacityStatus = false;
+opacityStatus = false,
 totalScore = 0,
 gameLevel = 0,
 delayPlayFirstTime = 1000,
@@ -23,16 +23,38 @@ rotationX = 0,
 gameInProgress = false,
 intervalballoonArray = [],
 firstTime = true,
+speed = 200,
 //Fixed Parameters and Caching
 gWidth = elGame.offsetWidth,
 gHeight = elGame.offsetHeight,
-balloonNumber,
+balloonNumber = 'null',
+opacityInterval = false,
 ///SET balloon WIDTH AND HEIGHT DYNAMICALLY!!!
 balloonWidth = 100,
 balloonHeight = 100;
 
 // setting objects
 var gameObject = {
+  //function to display instructions for first time users
+  instructions :function(){
+    var instructionsCount = 0;
+    var elInstructions = document.createElement('p');
+    elInstructions.classList.add('instructions');
+    elInstructions.innerText = "Wait...";
+    var instructionsInterval = setInterval(function(){
+      if (instructionsCount === 0){
+        elGame.appendChild(elInstructions);
+      }
+      if (instructionsCount >= delayTimerStart){
+        elInstructions.innerText = "GO!!!";
+      }
+      if (instructionsCount >= gameTime/2){
+        elInstructions.remove();
+        clearInterval(instructionsInterval);
+      }
+      instructionsCount += 1000;
+    },1000);
+  },
   //function to change game level
   changeGameLevel: function (){
     gameLevel +=1;
@@ -54,19 +76,14 @@ var gameObject = {
     }
     console.log('gameTime is :'+((gameTime/1000)+1));
   },
-  // opacitySetting : function(){
-  //   setTimeout(function () {
-  //     opacityStatus = true;
-  //   }, delayTimerStart+500);
-  //
-  //   if (opacityStatus == false && !elInvisible.classList.contains('opacityOn')){
-  //   elInvisible.classList.add('opacityOn');
-  //   } else if (opacityStatus = true){
-  //     elInvisible.classList.remove('opacityOn');
-  //     opacityStatus = false;
-  //     // return clearInterval(opacityInterval);
-  //   }
-  // },
+  opacitySetting : function(){
+    if (opacityStatus == false && !elInvisible.classList.contains('opacityOn')){
+    elInvisible.classList.add('opacityOn');
+  } else if (opacityStatus === true){
+      elInvisible.classList.remove('opacityOn');
+      clearInterval(opacityInterval);
+    }
+  },
   //function to deduct points
   deductFromScore: function (){
     console.log('deductFromScore is happening');
@@ -113,14 +130,18 @@ var gameObject = {
   },
   reeinitializingGameParam : function(){
     elInvisible.classList.add('invisibleOn');
+    opacityStatus = false;
     intervalballoonArray = [];
     elballoonArray = [];
     gameTime = (countDown*1000)+delayTimerStart,
     firstTime = true;
+    speed -= 40/gameLevel
     gameInProgress = false;
   },
   gameRestart : function(){
     elInvisible.classList.add('invisibleOn');
+    opacityStatus = false;
+    speed = 200,
     totalScore = 0,
     gameLevel = 0,
     balloonNumber = 0,
@@ -213,6 +234,7 @@ function playGame(){
   //initializing score
   if (gameLevel === 0){
     elScore.innerText = totalScore;
+    gameObject.instructions();
   }
   // taking away start game message
   elGameMessageH2.innerText = "";
@@ -226,7 +248,7 @@ function playGame(){
   balloonMoveTimer();
 
   // negative points for missing balloon
-  setTimeout(function(){elGame.addEventListener('click', gameObject.deductFromScore)}, 1000);
+  setTimeout(function(){elGame.addEventListener('click', gameObject.deductFromScore)}, delayTimerStart+500);
   // making sure can't call game with keydown once the game is playing
   gameInProgress = true;
 }
