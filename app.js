@@ -17,8 +17,6 @@ var elGame = document.getElementById('game'),
     ///SET BALOON WIDTH AND HEIGHT DYNAMICALLY!!!
     baloonWidth =100,
     baloonHeight = 100,
-    left = gWidth/2,
-    bottom = gHeight/2,
     rotationY = 0,
     rotationX = 0,
     gameInProgress = false,
@@ -77,6 +75,8 @@ function BaloonFactory (){
   this.rotationY = 0,
   this.rotationX = 0,
   this.firstTime = true,
+  this.left = gWidth/2,
+  this.bottom = gHeight/2,
   this.startedMoving = false;
 }
 // setting prototypes
@@ -87,16 +87,16 @@ BaloonFactory.prototype = {
     return direction;
   },
   moveLeft: function(){
-    left -=10;
+    this.left -=10;
   },
   moveRight: function(){
-    left += 10;
+    this.left += 10;
   },
   moveTop: function(){
-    bottom += 10;
+    this.bottom += 10;
   },
   moveBottom: function(){
-    bottom -= 10;
+    this.bottom -= 10;
   },
   createDiv: function(j){
     var newBaloon = document.createElement('div');

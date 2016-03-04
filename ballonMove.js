@@ -36,7 +36,7 @@ function baloonMove(thisBaloon){
         break;
     }
 
-    if (left > gWidth-baloonWidth){
+    if (thisBaloon.left > gWidth-baloonWidth){
       if (thisBaloon.dir1 = 1){
         thisBaloon.dir1 = 2;
         thisBaloon.moveLeft();
@@ -48,7 +48,7 @@ function baloonMove(thisBaloon){
       }
     }
 
-    if (left < 0){
+    if (thisBaloon.left < 0){
       if (thisBaloon.dir1 = 2){
         thisBaloon.dir1 = 1;
         thisBaloon.moveRight();
@@ -60,7 +60,7 @@ function baloonMove(thisBaloon){
       }
     }
 
-    if (bottom > gHeight-baloonHeight){
+    if (thisBaloon.bottom > gHeight-baloonHeight){
       if (thisBaloon.dir1 = 3){
         thisBaloon.dir1 = 4
         thisBaloon.moveBottom();
@@ -72,7 +72,7 @@ function baloonMove(thisBaloon){
       }
     }
 
-    if (bottom < 0){
+    if (thisBaloon.bottom < 0){
       if (thisBaloon.dir1 = 4){
         thisBaloon.dir1 = 3;
         thisBaloon.moveTop();
@@ -94,9 +94,9 @@ function baloonMove(thisBaloon){
       firstTime = false;
     }
     // places baloons at start
-    thisBaloon.element.style.left = left+'px';
-    thisBaloon.element.style.bottom = bottom+'px';
-    thisBaloon.element.style.transform = 'rotateX('+rotationX+'deg) rotateY('+rotationY+'deg)';
+    thisBaloon.element.style.left = thisBaloon.left+'px';
+    thisBaloon.element.style.bottom = thisBaloon.bottom+'px';
+    thisBaloon.element.style.transform = 'rotateX('+thisBaloon.rotationX+'deg) rotateY('+thisBaloon.rotationY+'deg)';
   }
   , 300);
 }
