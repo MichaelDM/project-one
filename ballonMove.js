@@ -93,7 +93,7 @@ function baloonMove(thisBaloon){
       }
       firstTime = false;
     }
-
+    // places baloons at start
     thisBaloon.element.style.left = left+'px';
     thisBaloon.element.style.bottom = bottom+'px';
     thisBaloon.element.style.transform = 'rotateX('+rotationX+'deg) rotateY('+rotationY+'deg)';
