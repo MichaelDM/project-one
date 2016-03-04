@@ -19,9 +19,7 @@ function baloonMoveTimer(){
       gameTime -= 1000;
       startTimer();
       // make ballons stop
-      for (var intB = 0; intB <intervalBaloonArray.length; intB ++ ){
-        clearInterval(intervalBaloonArray(intB));
-      }
+      gameObject.clearIntervalOfBaloonArray();
       // make timer stop
       clearInterval(timerInterval);
     } else

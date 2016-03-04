@@ -63,6 +63,11 @@ var gameObject = {
       baloonName.createDiv(i);
       elBaloonArray.push(baloonName);
     }
+  },
+  clearIntervalOfBaloonArray : function(){
+    for (var b = 0; b<intervalBaloonArray.length; b++ ){
+      clearInterval(intervalBaloonArray[b]);
+    }
   }
 }
 
