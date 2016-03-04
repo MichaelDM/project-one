@@ -12,13 +12,15 @@ function baloonMoveTimer(){
     }
   }
 
-
   // starting interval
   var timerInterval = setInterval(function(){
+    // setting timer to active
+    timerActive = true;
+
     // if game time finishes
     if (gameTime <= 0){
       gameTime -= 1000;
-      startTimer();
+      gameObject.startTimer();
       // make ballons stop
       gameObject.clearIntervalOfBaloonArray();
       // make timer stop
@@ -29,30 +31,26 @@ function baloonMoveTimer(){
         gameObject.removeElGameEventListener();
         clearInterval(timerInterval);
         gameObject.congratsMessage();
-        //
-        // Need to reeinitialize the game
-        //
+        //reinitializing game
+        gameObject.reeinitializingGameParam();
       } else{
         //if loose
         gameObject.removeElGameEventListener();
         clearInterval(timerInterval);
         gameObject.endGameMessage();
+        //reinitializing game
+        gameObject.reeinitializingGameParam();
       }
     } else if (elBaloonArray.length === 0){
       //if all baloons are popped before timer ends
-
       gameObject.removeElGameEventListener();
+      timerActive = false;
       clearInterval(timerInterval);
-      console.log(elTimer.classList.contains('timer-color-slider'));
       elTimer.classList.toggle('timer-color-slider');
-      console.log('took class off!');
-      console.log(elTimer.classList.contains('timer-color-slider'));
       gameObject.congratsMessage();
-      //
-      // Need to reeinitialize the game
-      //
+      //reinitializing game
+      gameObject.reeinitializingGameParam();
     } else {
-      console.log('calling timer');
       // seting timer after 1s
       setTimeout(gameObject.startTimer, delayTimerStart);
       gameTime -= 1000;

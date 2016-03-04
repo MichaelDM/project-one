@@ -11,6 +11,7 @@ var elGame = document.getElementById('game'),
     delayTimerStart = 1000,
     gameTime = (countDown*1000)+delayTimerStart,
     baloonNumber,
+    timerActive = false,
     totalScore = 0,
     gameLevel = 0,
     delayPlayFirstTime = 2000,
@@ -38,8 +39,12 @@ var gameObject = {
   },
   //function to change text in timer and toggle the css
   startTimer : function (){
-    elTimer.innerText = (gameTime/1000)+1;
-    if (!elTimer.classList.contains('timer-color-slider')){
+    if (timerActive === true){
+      elTimer.innerText = (gameTime/1000)+1;
+    } else {
+      elTimer.innerText = '';
+    }
+    if (!elTimer.classList.contains('timer-color-slider') && timerActive===true){
       elTimer.classList.toggle('timer-color-slider');
     }
     console.log('gameTime is :'+((gameTime/1000)+1));
@@ -184,5 +189,5 @@ function playGame(){
   // negative points for missing baloon
  setTimeout(function(){elGame.addEventListener('click', gameObject.deductFromScore)}, 1000);
 
-  gameInProgress = true;
+ gameInProgress = true;
 }
