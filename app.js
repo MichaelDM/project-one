@@ -1,6 +1,7 @@
 // setting variables
 var elGame = document.getElementById('game'),
     elGameMessage = document.getElementById('game-message'),
+    elGameMessageH2 = document.querySelector('#game-message h2'),
     elScore = document.getElementById('score'),
     elLevel = document.getElementById('level'),
     elTimer = document.getElementById('timer'),
@@ -68,6 +69,21 @@ var gameObject = {
     for (var b = 0; b<intervalBaloonArray.length; b++ ){
       clearInterval(intervalBaloonArray[b]);
     }
+  },
+  removeElGameEventListener : function(){
+    elGame.removeEventListener('click', gameObject.deductFromScore);
+  },
+  congratsMessage : function(){
+    elGameMessageH2.innerText = 'CONGRATULATIONS, you finished Level '+gameLevel+'! \nPress any key to continue to next level'
+  },
+  endGameMessage : function(){
+    elGameMessageH2.innerHTML = 'Sorry, time\'s up! You finished the game accumulating '+totalScore+' points! :)'
+  },
+  reeinitializingGameParam : function(){
+    intervalBaloonArray = [];
+    elBaloonArray = [];
+    firstTime = true;
+    gameInProgress = false;
   }
 }
 
@@ -121,6 +137,7 @@ BaloonFactory.prototype = {
     console.log('baloon is popping');
     event.stopPropagation();
     gameObject.addToScore();
+    elBaloonArray.pop();
     this.remove();
   },
   //generate random number betwee 1 and 4
@@ -133,17 +150,18 @@ BaloonFactory.prototype = {
 // Playing Game
 setTimeout(function(){document.addEventListener('keyup', playGame)}, delayPlayFirstTime);
 function playGame(){
-  console.log('game is starting');
   //disable keydown event if game is in progress
   if (gameInProgress){
+    console.log('game in progress');
     return;
   }
+  console.log('game is starting');
   //initializing score
   if (gameLevel === 0){
     elScore.innerText = totalScore;
   }
   // taking away start game message
-  elGameMessage.innerText = "";
+  elGameMessageH2.innerText = "";
   // change game level
   gameObject.changeGameLevel();
   // change baloon number
