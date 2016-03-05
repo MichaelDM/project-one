@@ -243,12 +243,11 @@ function playGame(){
   elGameMessageH2.innerText = "";
   // change game level
   gameObject.changeGameLevel();
-
   // change balloon number
   gameObject.changeBallonNumber();
   // create and display balloons on screen
   gameObject.createBallons();
-  // change game background
+  // change game and baloon background
   backgroundObject.changeBackgroundGame();
   // make balloons move and set timer
   balloonMoveTimer();
