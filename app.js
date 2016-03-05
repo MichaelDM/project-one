@@ -23,7 +23,7 @@ rotationX = 0,
 gameInProgress = false,
 intervalballoonArray = [],
 firstTime = true,
-speed = 270,
+speed = 400,
 //Fixed Parameters and Caching
 firstTimeEver = true,
 gWidth = elGame.offsetWidth,
@@ -79,7 +79,7 @@ var gameObject = {
     console.log('gameTime is :'+((gameTime/1000)+1));
   },
   opacitySetting : function(){
-    if (opacityStatus == false && !elInvisible.classList.contains('opacityOn')){
+    if (opacityStatus === false && !elInvisible.classList.contains('opacityOn')){
     elInvisible.classList.add('opacityOn');
   } else if (opacityStatus === true){
       elInvisible.classList.remove('opacityOn');
@@ -222,7 +222,7 @@ balloonFactory.prototype = {
     var direction = ~~((Math.random()*4)+1);
     return direction;
   }
-}
+};
 
 // Playing Game
 setTimeout(function(){document.addEventListener('keyup', playGame)}, delayPlayFirstTime);
@@ -243,14 +243,13 @@ function playGame(){
   elGameMessageH2.innerText = "";
   // change game level
   gameObject.changeGameLevel();
-  // change game background
-  backgroundObject.changeBackgroundGame();
+
   // change balloon number
   gameObject.changeBallonNumber();
   // create and display balloons on screen
   gameObject.createBallons();
-  // // change baloon background
-  balloonBackgroundObject.changeBackgroundGame();
+  // change game background
+  backgroundObject.changeBackgroundGame();
   // make balloons move and set timer
   balloonMoveTimer();
 

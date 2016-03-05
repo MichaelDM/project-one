@@ -22,36 +22,46 @@ var backgroundObject = {
   changeBackgroundGame : function(){
     switch (backgroundObject.assignLevelToBackground(gameLevel)) {
       case '1':
+        // this is to change background of game
         backgroundObject.changeBackgroundInDOM(backgroundObject.monet);
+        // this is to change background of balloons
+        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.monet);
         break;
       case '2':
         backgroundObject.changeBackgroundInDOM(backgroundObject.evolution);
+        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.evolution);
         break;
       case '3':
         backgroundObject.changeBackgroundInDOM(backgroundObject.lachapelle);
+        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.lachapelle);
         break;
       case '4':
         backgroundObject.changeBackgroundInDOM(backgroundObject.boccioni);
-        break;
+        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.boccioni);
         break;
       case '5':
         backgroundObject.changeBackgroundInDOM(backgroundObject.mapplethorpe);
+        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.mapplethorpe);
         break;
       case '6':
         backgroundObject.changeBackgroundInDOM(backgroundObject.shark);
+        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.shark);
         break;
       case '7':
         backgroundObject.changeBackgroundInDOM(backgroundObject.nature);
+        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.nature);
         break;
       case '8':
         backgroundObject.changeBackgroundInDOM(backgroundObject.paris);
+        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.paris);
         break;
       case '9':
         backgroundObject.changeBackgroundInDOM(backgroundObject.flowerGarden);
-        break;
+        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.flowerGarden);
         break;
       case '0':
         backgroundObject.changeBackgroundInDOM(backgroundObject.cosmos);
+        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.cosmos);
         break;
     }
   }
@@ -62,7 +72,7 @@ var balloonBackgroundObject = {
   evolution: 'http://thumbs.modthesims2.com/img/4/3/2/4/7/1/MTS_Beo-929924-matrix.jpg',
   shark : 'http://www.siamaquaticadventures.com/images/gallery/gallery-1439528848-portbigpic5.jpg',
   boccioni: 'https://londonartreviews.files.wordpress.com/2015/12/web-01.jpg?w=293&h=300',
-  lachapelle : 'http://brothersartgallery.com/bag/wp-content/uploads/2013/09/David-Lachapelle-quadro1.jpg',
+  lachapelle : 'https://alauristoncps.files.wordpress.com/2012/10/david-lachapelle-courtney-love.jpg',
   monet : 'http://www.intermonet.com/prints/w1077t300.jpg',
   mapplethorpe: 'http://www.photology.com/assets/images/MAPPLETHORPE%20Robert/MAPPLETHORPE%203.jpg',
   flowerGarden: 'http://www.3drivers.com/upload/iblock/144/japanese-vase-c-01.jpg',
@@ -78,42 +88,6 @@ var balloonBackgroundObject = {
   changeBackgroundInDOM : function(url){
     for (d=0; d<elballoonArray.length; d++){
       elballoonArray[d].element.style.backgroundImage = 'url("'+url+'")';
-    }
-  },
-  changeBackgroundGame : function(){
-    switch (balloonBackgroundObject.assignLevelToBackground(gameLevel)) {
-      case '1':
-        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.monet);
-        break;
-      case '2':
-        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.evolution);
-        break;
-      case '3':
-        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.lachapelle);
-        break;
-      case '4':
-        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.boccioni);
-        break;
-        break;
-      case '5':
-        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.mapplethorpe);
-        break;
-      case '6':
-        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.shark);
-        break;
-      case '7':
-        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.nature);
-        break;
-      case '8':
-        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.paris);
-        break;
-      case '9':
-        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.flowerGarden);
-        break;
-        break;
-      case '0':
-        balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.cosmos);
-        break;
     }
   }
 };
