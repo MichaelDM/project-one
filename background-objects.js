@@ -27,11 +27,11 @@ var backgroundObject = {
         // this is to change background of balloons
         balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.monet);
         break;
-      case '2':
+      case '8':
         backgroundObject.changeBackgroundInDOM(backgroundObject.evolution);
         balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.evolution);
         break;
-      case '3':
+      case '2':
         backgroundObject.changeBackgroundInDOM(backgroundObject.lachapelle);
         balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.lachapelle);
         break;
@@ -51,7 +51,7 @@ var backgroundObject = {
         backgroundObject.changeBackgroundInDOM(backgroundObject.nature);
         balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.nature);
         break;
-      case '8':
+      case '3':
         backgroundObject.changeBackgroundInDOM(backgroundObject.paris);
         balloonBackgroundObject.changeBackgroundInDOM(balloonBackgroundObject.paris);
         break;

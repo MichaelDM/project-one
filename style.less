@@ -100,7 +100,7 @@ h1{
 h2{
   font-size: @h2;
   text-align: center;
-  font-family: 'Bilbo Swash Caps', cursive;
+  font-family: 'krazy_nightsregular', cursive;
 }
 p{
   font-size: @p;
@@ -115,6 +115,8 @@ p{
   width: @game-width;
   background-color: lightblue;
   background-size: cover;
+	background-image: url('http://www.thebarefootbeat.com/wp-content/uploads/2013/10/alice_in_wonderland17.jpg');
+
 }
 #arsenal{
   width: @arsenal-width;
@@ -249,6 +251,12 @@ p{
       z-index: 100;
       top: 50%;
       .cross-browser(transform, translateY(-50%));
+			background-color: rgba(230,230,230,0.8);
+			box-sizing: border-box;
+			padding: 1rem;
+			border-radius: 2%;
+			display: inline-block;
+			overflow: hidden;
     }
   }
   #invisibleDiv{
@@ -269,11 +277,14 @@ p{
     padding: 5vw;
   }
 }
+.displayNone{
+	display: none !important;
+}
 .invisibleOn{
   z-index: 10;
 }
 .opacityOn{
-  background-color: rgba(0.3, 0.3, 0.3, 0.5);
+  background-color: rgba(0.3, 0.3, 0.3, 0.7);
 }
 //keyframe for #game-message
 @-webkit-keyframes gameMessageAppear{

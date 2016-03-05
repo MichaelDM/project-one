@@ -23,7 +23,7 @@ rotationX = 0,
 gameInProgress = false,
 intervalballoonArray = [],
 firstTime = true,
-speed = 400,
+speed = 420,
 //Fixed Parameters and Caching
 firstTimeEver = true,
 gWidth = elGame.offsetWidth,
@@ -125,9 +125,11 @@ var gameObject = {
     elGame.removeEventListener('click', gameObject.deductFromScore);
   },
   congratsMessage : function(){
+    elGameMessageH2.classList.toggle('displayNone');
     elGameMessageH2.innerText = 'CONGRATULATIONS, you finished Level '+gameLevel+'! \nPress any key to continue to next level'
   },
   endGameMessage : function(){
+    elGameMessageH2.classList.toggle('displayNone');
     elGameMessageH2.innerHTML = 'Sorry, time\'s up! You finished the game accumulating '+totalScore+' points! :) \n Press any key to restart game.'
   },
   reeinitializingGameParam : function(){
@@ -241,6 +243,7 @@ function playGame(){
   }
   // taking away start game message
   elGameMessageH2.innerText = "";
+  elGameMessageH2.classList.toggle('displayNone');
   // change game level
   gameObject.changeGameLevel();
   // change balloon number
