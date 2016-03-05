@@ -129,7 +129,13 @@ p{
   position: absolute;
   top: 0;
   height: @arsenal-top-height;
-  background-color: lightgreen;
+background: rgb(225,225,225); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(225,225,225,1) -1%, rgba(246,246,246,1) 0%, rgba(225,225,225,1) 0%, rgba(241,241,241,1) 50%, rgba(255,255,255,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(225,225,225,1) -1%,rgba(246,246,246,1) 0%,rgba(225,225,225,1) 0%,rgba(241,241,241,1) 50%,rgba(255,255,255,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(225,225,225,1) -1%,rgba(246,246,246,1) 0%,rgba(225,225,225,1) 0%,rgba(241,241,241,1) 50%,rgba(255,255,255,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e1e1e1', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
+
+
 }
 .arsenal-bottom{
   position: absolute;
@@ -187,6 +193,7 @@ p{
 }
 #timer {
     display: inline-block;
+		margin-top: 1rem;
     width: 10vh;
     height: 10vh;
     line-height: 10vh;
@@ -221,6 +228,8 @@ p{
 .arsenal-bottom{
   margin: auto auto;
   text-align: center;
+	background-image: url("http://motoki-y.sakura.ne.jp/kabegami/011/a.gif");
+	background-repeat: repeat;
   p,h1{
     padding-left: 15%;
     padding-right: 15%;

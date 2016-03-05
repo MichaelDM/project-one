@@ -23,7 +23,7 @@ rotationX = 0,
 gameInProgress = false,
 intervalballoonArray = [],
 firstTime = true,
-speed = 520,
+speed = 800,
 //Fixed Parameters and Caching
 firstTimeEver = true,
 gWidth = elGame.offsetWidth,
