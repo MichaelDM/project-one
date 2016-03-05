@@ -9,7 +9,7 @@ function balloonMove(thisballoon){
 
     switch (thisballoon.dir1) {
       case 1:
-        thisballoon.moveRight()
+        thisballoon.moveRight();
         break;
       case 2:
         thisballoon.moveLeft();
@@ -37,7 +37,7 @@ function balloonMove(thisballoon){
     }
 
     if (thisballoon.left > gWidth-balloonWidth){
-      if (thisballoon.dir1 = 1){
+      if (thisballoon.dir1 === 1){
         thisballoon.dir1 = 2;
         thisballoon.moveLeft();
         rotationY += 180;
@@ -49,7 +49,7 @@ function balloonMove(thisballoon){
     }
 
     if (thisballoon.left < 0){
-      if (thisballoon.dir1 = 2){
+      if (thisballoon.dir1 === 2){
         thisballoon.dir1 = 1;
         thisballoon.moveRight();
         rotationY += 180;
@@ -61,8 +61,8 @@ function balloonMove(thisballoon){
     }
 
     if (thisballoon.bottom > gHeight-balloonHeight){
-      if (thisballoon.dir1 = 3){
-        thisballoon.dir1 = 4
+      if (thisballoon.dir1 === 3){
+        thisballoon.dir1 = 4;
         thisballoon.moveBottom();
         rotationX += 180;
       } else {
@@ -73,7 +73,7 @@ function balloonMove(thisballoon){
     }
 
     if (thisballoon.bottom < 0){
-      if (thisballoon.dir1 = 4){
+      if (thisballoon.dir1 === 4){
         thisballoon.dir1 = 3;
         thisballoon.moveTop();
         rotationX += 180;
@@ -96,8 +96,7 @@ function balloonMove(thisballoon){
     // places balloons
     thisballoon.element.style.left = thisballoon.left+'px';
     thisballoon.element.style.bottom = thisballoon.bottom+'px';
-    thisballoon.element.style.transform = 'rotateX('+thisballoon.rotationX+'deg) rotateY('+thisballoon.rotationY+'deg)';
-  }
-  , speed);
+    thisballoon.element.style.transform = 'rotateX('+thisballoon.rotationX+'deg) rotateY('+thisballoon.rotationY+'deg)'; } , speed);
+
   intervalballoonArray.push(intervalballoon);
 }

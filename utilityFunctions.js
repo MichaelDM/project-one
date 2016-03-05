@@ -3,7 +3,7 @@ function balloonMoveTimer(){
   // setting opacity before balloons move so that user knows can't pop balloons
   setTimeout(function () {opacityStatus = true;}, (delayTimerStart+1250));
   opacityInterval = setInterval(function(){
-  gameObject.opacitySetting()},10);
+  gameObject.opacitySetting();}, 10);
 
   // start moving balloons when start of game Time starts
   if (gameTime === (countDown*1000)+delayTimerStart){

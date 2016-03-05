@@ -126,11 +126,11 @@ var gameObject = {
   },
   congratsMessage : function(){
     elGameMessageH2.classList.toggle('displayNone');
-    elGameMessageH2.innerText = 'CONGRATULATIONS, you finished Level '+gameLevel+'! \nPress any key to continue to next level'
+    elGameMessageH2.innerText = 'CONGRATULATIONS, you finished Level '+gameLevel+'! \nPress any key to continue to next level';
   },
   endGameMessage : function(){
     elGameMessageH2.classList.toggle('displayNone');
-    elGameMessageH2.innerHTML = 'Sorry, time\'s up! You finished the game accumulating '+totalScore+' points! :) \n Press any key to restart game.'
+    elGameMessageH2.innerHTML = 'Sorry, time\'s up! You finished the game accumulating '+totalScore+' points! :) \n Press any key to restart game.';
   },
   reeinitializingGameParam : function(){
     elInvisible.classList.add('invisibleOn');
@@ -138,8 +138,8 @@ var gameObject = {
     intervalballoonArray = [];
     elballoonArray = [];
     gameTime = (countDown*1000)+delayTimerStart,
-    firstTime = true;
-    speed -= 40/gameLevel
+    firstTime = true,
+    speed -= 40/gameLevel,
     gameInProgress = false;
   },
   gameRestart : function(){
@@ -163,7 +163,7 @@ var gameObject = {
       elballoonsToRemove[r].remove();
     }
   }
-}
+};
 
 // setting factory functions
 function balloonFactory (){
@@ -181,6 +181,12 @@ function balloonFactory (){
 }
 // setting prototypes
 balloonFactory.prototype = {
+  randomX : function(){
+
+  },
+  randomY : function(){
+
+  },
   randomSelection: function (){
     //generate random number betwee 1 and 4
     var direction = ~~((Math.random()*4)+1);
@@ -227,7 +233,7 @@ balloonFactory.prototype = {
 };
 
 // Playing Game
-setTimeout(function(){document.addEventListener('keyup', playGame)}, delayPlayFirstTime);
+setTimeout(function(){document.addEventListener('keyup', playGame);}, delayPlayFirstTime);
 function playGame(){
   //disable keydown event if game is in progress
   if (gameInProgress){
@@ -256,7 +262,7 @@ function playGame(){
   balloonMoveTimer();
 
   // negative points for missing balloon
-  setTimeout(function(){elGame.addEventListener('click', gameObject.deductFromScore)}, delayTimerStart+500);
+  setTimeout(function(){elGame.addEventListener('click', gameObject.deductFromScore);}, delayTimerStart+500);
   // making sure can't call game with keydown once the game is playing
   gameInProgress = true;
 }
