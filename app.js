@@ -250,7 +250,7 @@ function playGame(){
   // create and display balloons on screen
   gameObject.createBallons();
   // // change baloon background
-  // balloonBackgroundObject.changeBackgroundGame();
+  balloonBackgroundObject.changeBackgroundGame();
   // make balloons move and set timer
   balloonMoveTimer();
 
