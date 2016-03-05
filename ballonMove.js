@@ -1,6 +1,10 @@
 function balloonMove(thisballoon){
   thisballoon.dir1 = thisballoon.randomSelection();
   thisballoon.dir2 = thisballoon.randomSelection();
+  thisballoon.left = thisballoon.randomX();
+  thisballoon.bottom = thisballoon.randomY();
+  // add class for baloons to appear
+  setTimeout(function(){thisballoon.element.classList.add('appear');}, 500);
 
   var intervalballoon = setInterval(function(){
     while (thisballoon.dir1===thisballoon.dir2){

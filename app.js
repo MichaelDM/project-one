@@ -23,7 +23,7 @@ rotationX = 0,
 gameInProgress = false,
 intervalballoonArray = [],
 firstTime = true,
-speed = 420,
+speed = 520,
 //Fixed Parameters and Caching
 firstTimeEver = true,
 gWidth = elGame.offsetWidth,
@@ -175,17 +175,19 @@ function balloonFactory (){
   this.rotationY = 0,
   this.rotationX = 0,
   this.firstTime = true,
-  this.left = gWidth/2,
-  this.bottom = gHeight/2,
   this.startedMoving = false;
 }
 // setting prototypes
 balloonFactory.prototype = {
   randomX : function(){
-
+    var initialLeft = ~~(Math.random()*(gWidth-100));
+    console.log(initialLeft);
+    return initialLeft;
   },
   randomY : function(){
-
+    var initialBottom = ~~(Math.random()*(gHeight-100));
+    console.log(initialBottom);
+    return initialBottom;
   },
   randomSelection: function (){
     //generate random number betwee 1 and 4

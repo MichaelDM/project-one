@@ -327,8 +327,17 @@ p{
   border-radius: 50%;
   overflow: hidden;
   background-size: cover;
+	opacity: 0;
+  transition: opacity 0.9s ease-in;
+  -ms-transition: opacity 0.9s ease-in;
+  -moz-transition: opacity 0.9s ease-in;
+  -webkit-transition: opacity 0.9s ease-in;
+
   // top: 50%;
   // .cross-browser(transform, translateY(-50%));
   // left: 50%;
   // .cross-browser(transform, translateX(-50%));
+}
+.balloon.appear{
+	    opacity: 1;
 }
