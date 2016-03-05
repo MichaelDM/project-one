@@ -23,8 +23,9 @@ rotationX = 0,
 gameInProgress = false,
 intervalballoonArray = [],
 firstTime = true,
-speed = 200,
+speed = 270,
 //Fixed Parameters and Caching
+firstTimeEver = true,
 gWidth = elGame.offsetWidth,
 gHeight = elGame.offsetHeight,
 balloonNumber = 'null',
@@ -33,7 +34,8 @@ opacityInterval = false,
 balloonWidth = 100,
 balloonHeight = 100;
 
-// setting objects
+
+// objects needed to play the game (game + baloon)
 var gameObject = {
   //function to display instructions for first time users
   instructions :function(){
@@ -232,7 +234,8 @@ function playGame(){
   }
   console.log('game is starting');
   //initializing score
-  if (gameLevel === 0){
+  if (gameLevel === 0 && firstTimeEver){
+    firstTimeEver = false;
     elScore.innerText = totalScore;
     gameObject.instructions();
   }
@@ -240,10 +243,14 @@ function playGame(){
   elGameMessageH2.innerText = "";
   // change game level
   gameObject.changeGameLevel();
+  // change game background
+  backgroundObject.changeBackgroundGame();
   // change balloon number
   gameObject.changeBallonNumber();
   // create and display balloons on screen
   gameObject.createBallons();
+  // // change baloon background
+  // balloonBackgroundObject.changeBackgroundGame();
   // make balloons move and set timer
   balloonMoveTimer();
 
