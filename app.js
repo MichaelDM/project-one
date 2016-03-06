@@ -7,6 +7,8 @@ elScore = document.getElementById('score'),
 elLevel = document.getElementById('level'),
 elTimer = document.getElementById('timer'),
 elInvisible = document.getElementById('invisibleDiv'),
+elInstructionsTitle = document.querySelector('.arsenal-bottom-wrapper h1'),
+elInstructionsText = document.querySelector('.arsenal-bottom-wrapper p'),
 //Initial Parameters Settings
 countDown = 12,
 delayTimerStart = 2000,
@@ -23,7 +25,7 @@ rotationX = 0,
 gameInProgress = false,
 intervalballoonArray = [],
 firstTime = true,
-speed = 200,
+speed = 300,
 initialSpeed = speed,
 //Fixed Parameters and Caching
 firstTimeEver = true,
@@ -31,6 +33,7 @@ gWidth = elGame.offsetWidth,
 gHeight = elGame.offsetHeight,
 balloonNumber = 'null',
 opacityInterval = false,
+highScore = 0,
 ///SET balloon WIDTH AND HEIGHT DYNAMICALLY!!!
 balloonWidth = 100,
 balloonHeight = 100;
@@ -148,6 +151,7 @@ var gameObject = {
   },
   gameRestart : function(){
     elInvisible.classList.add('invisibleOn');
+    highScoreObject.setHighScore();
     opacityStatus = false;
     speed = initialSpeed,
     totalScore = 0,
@@ -159,7 +163,7 @@ var gameObject = {
     intervalballoonArray = [];
     elballoonArray = [];
     firstTime = true;
-    gameInProgress = false;
+    gameInProgress =  false;
   },
   removeBallons: function(){
     var elballoonsToRemove = document.querySelectorAll('.balloon');
@@ -168,6 +172,7 @@ var gameObject = {
     }
   }
 };
+
 
 // setting factory functions
 function balloonFactory (){
@@ -229,7 +234,7 @@ balloonFactory.prototype = {
     event.stopPropagation();
     gameObject.addToScore();
     elballoonArray.pop();
-    console.log('this is :',this);
+    // including the jquery ui explosion
     $(this).toggle('explode');
     this.remove();
   },
