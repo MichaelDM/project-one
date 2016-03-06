@@ -23,7 +23,7 @@ rotationX = 0,
 gameInProgress = false,
 intervalballoonArray = [],
 firstTime = true,
-speed = 800,
+speed = 200,
 initialSpeed = speed,
 //Fixed Parameters and Caching
 firstTimeEver = true,
