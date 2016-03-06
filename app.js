@@ -103,6 +103,7 @@ var gameObject = {
   // function to addScore
   addToScore: function(){
     // console.log('addScore is happening');
+    console.log('add to score');
     totalScore += 3*gameLevel;
     elScore.innerText = totalScore;
   },
@@ -232,7 +233,7 @@ balloonFactory.prototype = {
     // disabling click to bubble up to game
     // console.log('balloon is popping');
     event.stopPropagation();
-    // gameObject.addToScore();
+    gameObject.addToScore();
     elballoonArray.pop();
     // including the jquery ui explosion
     $(this).toggle('explode');
