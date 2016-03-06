@@ -140,7 +140,7 @@ var gameObject = {
     elballoonArray = [];
     gameTime = (countDown*1000)+delayTimerStart,
     firstTime = true,
-    speed -= 30/(gameLevel);
+    speed -= 50/(gameLevel);
     if (speed<=0){
       speed = 1;
     }
@@ -229,6 +229,8 @@ balloonFactory.prototype = {
     event.stopPropagation();
     gameObject.addToScore();
     elballoonArray.pop();
+    console.log('this is :',this);
+    $(this).toggle('explode');
     this.remove();
   },
   //generate random number betwee 1 and 4
