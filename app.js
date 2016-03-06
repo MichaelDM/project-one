@@ -80,7 +80,7 @@ var gameObject = {
     if (!elTimer.classList.contains('timer-color-slider') && timerActive===true){
       elTimer.classList.toggle('timer-color-slider');
     }
-    console.log('gameTime is :'+((gameTime/1000)+1));
+    // console.log('gameTime is :'+((gameTime/1000)+1));
   },
   opacitySetting : function(){
     if (opacityStatus === false && !elInvisible.classList.contains('opacityOn')){
@@ -92,7 +92,7 @@ var gameObject = {
   },
   //function to deduct points
   deductFromScore: function (){
-    console.log('deductFromScore is happening');
+    // console.log('deductFromScore is happening');
     if (totalScore <= 0){
       // do nothing
     } else {
@@ -102,7 +102,7 @@ var gameObject = {
   },
   // function to addScore
   addToScore: function(){
-    console.log('addScore is happening');
+    // console.log('addScore is happening');
     totalScore += 3*gameLevel;
     elScore.innerText = totalScore;
   },
@@ -190,7 +190,7 @@ function balloonFactory (){
 balloonFactory.prototype = {
   randomX : function(){
     var initialLeft = ~~(Math.random()*(gWidth-100));
-    console.log(initialLeft);
+    // console.log(initialLeft);
     return initialLeft;
   },
   randomY : function(){
@@ -230,9 +230,9 @@ balloonFactory.prototype = {
   //function when balloon is popped
   balloonPop: function (){
     // disabling click to bubble up to game
-    console.log('balloon is popping');
+    // console.log('balloon is popping');
     event.stopPropagation();
-    gameObject.addToScore();
+    // gameObject.addToScore();
     elballoonArray.pop();
     // including the jquery ui explosion
     $(this).toggle('explode');
@@ -250,10 +250,10 @@ setTimeout(function(){document.addEventListener('keyup', playGame);}, delayPlayF
 function playGame(){
   //disable keydown event if game is in progress
   if (gameInProgress){
-    console.log('game in progress');
+    // console.log('game in progress');
     return;
   }
-  console.log('game is starting');
+  // console.log('game is starting');
   //initializing score
   if (gameLevel === 0 && firstTimeEver){
     firstTimeEver = false;

@@ -11,12 +11,8 @@ var highScoreObject = {
   level5: "Pffff. Stop playing seriously, you're too good! :D",
 
   setHighScore : function(){
-    console.log('calling high score!');
     // checks if made progress and also if have a score to start with... if not, person may have not understood the game and still needs instructions
-    console.log('totalScore is ', totalScore);
-    console.log('highScore is', highScore);
     if (totalScore > highScore){
-      console.log('going into the loop');
       highScore = totalScore,
       // displaying title and high score
       elInstructionsTitle.innerText = 'HIGH SCORE:\n'+highScore;
