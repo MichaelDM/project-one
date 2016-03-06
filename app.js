@@ -8,7 +8,7 @@ elLevel = document.getElementById('level'),
 elTimer = document.getElementById('timer'),
 elInvisible = document.getElementById('invisibleDiv'),
 //Initial Parameters Settings
-countDown = 10,
+countDown = 12,
 delayTimerStart = 2000,
 gameTime = (countDown*1000)+delayTimerStart,
 timerActive = false,
@@ -24,6 +24,7 @@ gameInProgress = false,
 intervalballoonArray = [],
 firstTime = true,
 speed = 800,
+initialSpeed = speed,
 //Fixed Parameters and Caching
 firstTimeEver = true,
 gWidth = elGame.offsetWidth,
@@ -145,7 +146,7 @@ var gameObject = {
   gameRestart : function(){
     elInvisible.classList.add('invisibleOn');
     opacityStatus = false;
-    speed = 200,
+    speed = initialSpeed,
     totalScore = 0,
     gameLevel = 0,
     balloonNumber = 0,
