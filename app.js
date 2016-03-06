@@ -140,7 +140,10 @@ var gameObject = {
     elballoonArray = [];
     gameTime = (countDown*1000)+delayTimerStart,
     firstTime = true,
-    speed -= 30/gameLevel,
+    speed -= 30/(gameLevel);
+    if (speed<=0){
+      speed = 1;
+    }
     gameInProgress = false;
   },
   gameRestart : function(){
