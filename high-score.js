@@ -13,7 +13,7 @@ var highScoreObject = {
   setHighScore : function(){
     // checks if made progress and also if have a score to start with... if not, person may have not understood the game and still needs instructions
     if (totalScore > highScore){
-      highScore = totalScore,
+      highScore = totalScore;
       // displaying title and high score
       elInstructionsTitle.innerText = 'HIGH SCORE:\n'+highScore;
       // if statement to add correct paragaph to user
